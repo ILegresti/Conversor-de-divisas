@@ -23,7 +23,8 @@ let totalHastaAhora = 0;
 let mensajeUsuario = prompt("Ingrese cantidad a intercambiar o presione 0 para salir")
 function sumoDeAUnoHastaLLegarACantidad(cantidadASumar){
     while(totalHastaAhora != cantidadASumar && mensajeUsuario != "0"){
-        totalHastaAhora = totalHastaAhora + 1
+        totalHastaAhora = totalHastaAhora + mensajeUsuario
+        mensajeUsuario = prompt("Ingrese cantidad a intercambiar o presione 0 para salir")
     }
     return console.log("Tu total es: "+ totalHastaAhora)
 }
