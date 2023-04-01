@@ -1,4 +1,4 @@
-let totalDelIntercambio = 0;
+/* let totalDelIntercambio = 0;
 const valorDolar = 373;
 const valorEuro = 212;
 const valorPesoArg = 1;
@@ -14,7 +14,7 @@ function totalDeLaConversion (cantidadAIntercambiar){
         alert("Moneda aun no identificada ")
     }
     return alert("El total del intercambio es: "+ totalDelIntercambio)
-}
+} */
 
 /* totalDeLaConversion(parseFloat(prompt("ingrese cantidad a intercambiar:")))
 
@@ -23,7 +23,7 @@ function totalDeLaConversion (cantidadAIntercambiar){
 
 
 
-let totalHastaAhora = 0;
+/* let totalHastaAhora = 0;
 function convertir(cantidad, divisa){
     if(divisa == "Dolar" || divisa == "dolar"){
         totalHastaAhora = cantidad / valorDolar
@@ -54,3 +54,29 @@ function sumoDeAUnoHastaLLegarACantidad(){
 
 sumoDeAUnoHastaLLegarACantidad()
 
+ */
+
+
+// funcion constructora
+class moneda{
+    constructor(nombre,valorVenta,ValorCompra){
+        this.nombre = nombre;
+        this.valorVenta = valorVenta;
+        this.ValorCompra = ValorCompra;
+    }
+}
+
+// algunos objetos creados
+const dolar = new moneda("Dolar", 395,391);
+const euro = new moneda("Euro", 427,422);
+const pesoArg = new moneda("Pesos argentinos",1,1);
+
+// metodo filter
+const monedasVarias = [dolar,euro,pesoArg];
+const filtroPorPrecio = monedasVarias.filter((el) => el.valorVenta < 400);
+console.log(filtroPorPrecio);
+
+
+//metodo some()
+const hayMoneda = monedasVarias.find((el) => el.nombre == "Dolar");
+console.log(hayMoneda);
