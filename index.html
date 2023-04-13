@@ -34,11 +34,17 @@
                 <button class="btn dropdown-toggle dropDown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Moneda a cambiar
                 </button>
-                <ul class="dropdown-menu">
+                <!-- <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#">Euro</a></li>
                   <li><a class="dropdown-item" href="#">Dolar</a></li>
                   <li><a class="dropdown-item" href="#">Peso Argentino</a></li>
-                </ul>
+                </ul> -->
+                <select name="monedaInicial" id="monedaInicial">
+                  <option value="Euro">Euro</option>
+                  <option value="Dolar">Dolar</option>
+                  <option value="PesoArg">Pesos Argentinos</option>
+                
+                </select>
               </div>
               <div>
                 <input type="number" class="form-control labelSection" id="labelCambiador1" placeholder="Ingrese un numero...">
@@ -57,7 +63,7 @@
                   <li><a class="dropdown-item" href="#">Peso Argentino</a></li>
                 </ul>
               </div>
-              <input type="" class="form-control labelSection" id="labelCambiador2" placeholder="Total del intercambio...">
+              <input type="number" class="form-control labelSection" id="labelCambiador2" placeholder="Ingrese un numero...">
             </div>
 
 
