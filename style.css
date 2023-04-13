@@ -89,8 +89,36 @@ header nav ul li a{
 }
 
 .tamanioSection{
-height: 40vh;
+height: 50%;
 width: 100%;
+}
+
+
+
+.contenedorDeBoton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5rem;   
+}
+
+
+.botonIntercambio{
+    width: 30%;
+    height: 30%;
+    padding: 1rem;
+    border-radius: 20px;
+    box-shadow: var(--box-shadow);
+    border: solid black 2px;
+    color: white;
+    background-color: var(--main-color);
+    
+}
+
+.botonIntercambio:hover{
+    color: var(--main-color);
+    background-color: white;
+
 }
 
 

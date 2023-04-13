@@ -80,3 +80,11 @@ console.log(filtroPorPrecio);
 //metodo some()
 const hayMoneda = monedasVarias.find((el) => el.nombre == "Dolar");
 console.log(hayMoneda);
+
+
+
+
+const label1 = document.getElementById("labelCambiador1");
+const label2 = document.getElementById("labelCambiador2");
+
+
