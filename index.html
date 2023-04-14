@@ -22,7 +22,10 @@
     </header>
 
     <main>
-      <h1>Convierte el valor de tus divisas al instante</h1>
+      <div class="filter">
+        <h1>Convierte el valor de tus divisas al instante</h1>
+      </div>
+      
 
       <section class="tamanioSection">
         <div class="container text-center separacionPrueba tamanioSection ">
@@ -30,20 +33,11 @@
           <div class="row tamanioSection">
 
             <div class="col sectionDivisas">
-              <div class="dropdown">
-                <button class="btn dropdown-toggle dropDown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Moneda a cambiar
-                </button>
-                <!-- <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Euro</a></li>
-                  <li><a class="dropdown-item" href="#">Dolar</a></li>
-                  <li><a class="dropdown-item" href="#">Peso Argentino</a></li>
-                </ul> -->
-                <select name="monedaInicial" id="monedaInicial">
+              <div>
+                <select class="dropDown" name="monedaInicial" id="monedaInicial">
                   <option value="Euro">Euro</option>
                   <option value="Dolar">Dolar</option>
                   <option value="PesoArg">Pesos Argentinos</option>
-                
                 </select>
               </div>
               <div>
@@ -53,17 +47,15 @@
 
 
             <div class="sectionDivisas">
-              <div class="dropdown">
-                <button class="btn dropdown-toggle dropDown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Moneda a cambiar
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Euro</a></li>
-                  <li><a class="dropdown-item" href="#">Dolar</a></li>
-                  <li><a class="dropdown-item" href="#">Peso Argentino</a></li>
-                </ul>
+              <div>
+  
+                <select class="dropDown" name="monedaFinal" id="monedaFinal">
+                  <option value="Euro">Euro</option>
+                  <option value="Dolar">Dolar</option>
+                  <option value="PesosArg">Pesos Argentinos</option>
+                </select>
               </div>
-              <input type="number" class="form-control labelSection" id="labelCambiador2" placeholder="Ingrese un numero...">
+              <label class="labelSection" for="number"></label>
             </div>
 
 
@@ -74,12 +66,7 @@
       </section>
 
 
-    <div class="contenedorDeBoton">
-      <button class="botonIntercambio">Intercambiar</button>
 
-    </div>
-
-  
       <section>
         <div class="container">
           <div class="card">
@@ -124,15 +111,15 @@
     </main>
 
     <footer>
-      <button>
+      <button class="btnInfo">
         <a href="https://www.linkedin.com/in/ignacio-legresti-002110208/">Seguime en LinkedIn</a>
       </button>
 
-      <button>
+      <button class="btnInfo">
         <a href="https://www.instagram.com/nacholegresti/">Seguime en Instagram</a>
       </button>
 
-      <button>
+      <button class="btnInfo">
         <a href="https://github.com/ILegresti">Seguime en GitHub</a>
       </button>
 

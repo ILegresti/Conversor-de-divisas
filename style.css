@@ -22,7 +22,6 @@ body h1{
     justify-content: center;
     padding: 10rem;
     box-shadow: --box-shadow;
-    background-image: url(img/Dinero.jpg);
     font-size: 7rem;
     color: aliceblue;
 }
@@ -34,6 +33,10 @@ header nav ul li a{
     padding: 1rem;
 }
 
+.filter{
+    background-image: url(img/Dinero.jpg);
+    backdrop-filter: blur(40px);
+}
 .buttonArea{
     box-shadow: var(--box-shadow);
     display: flex;
@@ -59,6 +62,12 @@ header nav ul li a{
     background-color: var(--main-color);
     font-size: 2rem;
     color: var(--secondary-color);
+    border-radius: 4px;
+}
+
+.btnInfo{
+    background-color: var(--secondary-color);
+    color: var(--main-color);
 }
 
 
@@ -93,33 +102,6 @@ height: 50%;
 width: 100%;
 }
 
-
-
-.contenedorDeBoton{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 5rem;   
-}
-
-
-.botonIntercambio{
-    width: 30%;
-    height: 30%;
-    padding: 1rem;
-    border-radius: 20px;
-    box-shadow: var(--box-shadow);
-    border: solid black 2px;
-    color: white;
-    background-color: var(--main-color);
-    
-}
-
-.botonIntercambio:hover{
-    color: var(--main-color);
-    background-color: white;
-
-}
 
 
 /*  Inicia seccion de Cards*/
@@ -197,7 +179,6 @@ footer{
 
 footer button{
     margin: 10px;
-    background-color: var(--main-color);
     border: 2px solid var(--secondary-color);
     color: var(--secondary-color);
     padding: 10px;
@@ -231,7 +212,7 @@ footer button a {
   
 footer button:hover a {
     left: 1em;
-    color: var(--secondary-color);
+    color: var(--main-color);
 }
   
 /*Final de footer*/
