@@ -84,7 +84,82 @@ console.log(hayMoneda);
 
 
 
-const label1 = document.getElementById("labelCambiador1");
-const label2 = document.getElementById("labelCambiador2");
+const dropdown1 = document.getElementById("monedaInicial");
+const dropdown2 = document.getElementById("monedaFinal");
+const inputCambio = document.getElementById("inputMonto");
+const total = document.getElementById("labelFinal");
+
+
+function seleccionDeDivisa1(){
+    const seleccionDeDivisa1 = dropdown1.value;
+    const seleccionDeDivisa2 = dropdown2.value;
+    const monto = inputCambio.value;
+
+    // tomo las divisas seleccionadas en los dropdowns y el valor a cambiar
+    let resultado = 0 ; // establezco el resultado del label hasta ahora
+
+
+    if (seleccionDeDivisa1 == seleccionDeDivisa2){
+        resultado = inputCambio;
+
+    }else{ // conversion de dolar a euro y a pesos
+        switch (seleccionDeDivisa1){
+            case "Dolar":
+                switch (seleccionDeDivisa2){
+                    case "Euro":
+                        resultado = monto * euro.valorVenta;
+                        break;
+                    case "Pesos Argentinos":
+                        resultado = monto * pesoArg.valorVenta;
+                        break;
+                    default:
+                        break;     
+                }
+                break;
+            case "Euro": // conversion de euro a dolar y a pesos
+                switch(seleccionDeDivisa2){
+                    case "Dolar":
+                        resultado = monto * dolar.valorVenta;
+                        break;
+                    case "Pesos Argentinos":
+                        resultado = monto * pesoArg.valorVenta;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case "Pesos Argentinos": // conversion de pesos a dolar y euro
+                switch(seleccionDeDivisa2){
+                    case "Dolar":
+                        resultado = monto / dolar.valorVenta;
+                        break;
+                    case "Euro":
+                        resultado = monto / euro.valorVenta;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            default:
+                break;    
+                   
+        }
+    }
+
+
+} 
+
+total.textContent = resultado.toFixed(2);
+
+dropdown1.addEventListener("change", divisaConvertida);
+dropdown2.addEventListener("change", divisaConvertida);
+amountInput.addEventListener("input", divisaConvertida);
+
+//quiero probar de meterlo asi pero tampoco
+total.innerHTML = `
+<label class="labelSection labelTotal labelSection" for="number" id="labelFinal">${total}</label>
+
+`;
+
 
 

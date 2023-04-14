@@ -57,6 +57,9 @@ header nav ul li a{
     
 
 }
+.labelTotal{
+    color: black;
+}
 
 .dropDown{
     background-color: var(--main-color);
