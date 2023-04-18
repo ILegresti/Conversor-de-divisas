@@ -89,14 +89,14 @@ const dropdown2 = document.getElementById("monedaFinal");
 const inputCambio = document.getElementById("inputMonto");
 const total = document.getElementById("labelFinal");
 
-
+let resultado = 0;
 function seleccionDeDivisa1(){
     const seleccionDeDivisa1 = dropdown1.value;
     const seleccionDeDivisa2 = dropdown2.value;
     const monto = inputCambio.value;
 
     // tomo las divisas seleccionadas en los dropdowns y el valor a cambiar
-    let resultado = 0 ; // establezco el resultado del label hasta ahora
+ // establezco el resultado del label hasta ahora
 
 
     if (seleccionDeDivisa1 == seleccionDeDivisa2){
@@ -151,9 +151,15 @@ function seleccionDeDivisa1(){
 
 total.textContent = resultado.toFixed(2);
 
-dropdown1.addEventListener("change", divisaConvertida);
-dropdown2.addEventListener("change", divisaConvertida);
-amountInput.addEventListener("input", divisaConvertida);
+dropdown1.addEventListener("change", () => {
+    console.log("Cambiaste de moneda")
+});
+dropdown2.addEventListener("change",() => {
+    console.log("Cambiaste de moneda")
+} );
+inputCambio.addEventListener("input",() => {
+    console.log("monto a intercambiar")
+} );
 
 //quiero probar de meterlo asi pero tampoco
 total.innerHTML = `
@@ -161,5 +167,5 @@ total.innerHTML = `
 
 `;
 
-
+console.log(resultado);
 
