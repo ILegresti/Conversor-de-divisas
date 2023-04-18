@@ -59,10 +59,10 @@ sumoDeAUnoHastaLLegarACantidad()
 
 // funcion constructora
 class moneda{
-    constructor(nombre,valorVenta,ValorCompra){
+    constructor(nombre,valorVenta,valorCompra){
         this.nombre = nombre;
         this.valorVenta = valorVenta;
-        this.ValorCompra = ValorCompra;
+        this.valorCompra = valorCompra;
     }
 }
 
@@ -71,7 +71,7 @@ const dolar = new moneda("Dolar", 395,391);
 const euro = new moneda("Euro", 427,422);
 const pesoArg = new moneda("Pesos argentinos",1,1);
 
-// metodo filter
+/* // metodo filter
 const monedasVarias = [dolar,euro,pesoArg];
 const filtroPorPrecio = monedasVarias.filter((el) => el.valorVenta < 400);
 console.log(filtroPorPrecio);
@@ -80,7 +80,7 @@ console.log(filtroPorPrecio);
 //metodo some()
 const hayMoneda = monedasVarias.find((el) => el.nombre == "Dolar");
 console.log(hayMoneda);
-
+ */
 
 
 
@@ -89,7 +89,6 @@ const dropdown2 = document.getElementById("monedaFinal");
 const inputCambio = document.getElementById("inputMonto");
 const total = document.getElementById("labelFinal");
 
-let resultado = 0;
 function seleccionDeDivisa1(){
     const seleccionDeDivisa1 = dropdown1.value;
     const seleccionDeDivisa2 = dropdown2.value;
@@ -100,47 +99,51 @@ function seleccionDeDivisa1(){
 
 
     if (seleccionDeDivisa1 == seleccionDeDivisa2){
-        resultado = inputCambio;
+        total.innerText = monto;
 
     }else{ // conversion de dolar a euro y a pesos
         switch (seleccionDeDivisa1){
             case "Dolar":
                 switch (seleccionDeDivisa2){
                     case "Euro":
-                        resultado = monto * euro.valorVenta;
+                        total.innerText = (monto * 0.92).toFixed(2); // 0.92 es la tasa de conversion (395 / 427)
                         break;
-                    case "Pesos Argentinos":
-                        resultado = monto * pesoArg.valorVenta;
+                    case "PesoArg":
+                        total.innerText = (monto * pesoArg.valorVenta).toFixed(2);
                         break;
                     default:
+                        total.innerText = monto;
                         break;     
                 }
                 break;
             case "Euro": // conversion de euro a dolar y a pesos
                 switch(seleccionDeDivisa2){
                     case "Dolar":
-                        resultado = monto * dolar.valorVenta;
+                        total.innerText = (monto * 1.08).toFixed(2);// 1.08 es la tasa de conversion (427 / 395)
                         break;
-                    case "Pesos Argentinos":
-                        resultado = monto * pesoArg.valorVenta;
+                    case "PesoArg":
+                        total.innerText = monto * (pesoArg.valorVenta).toFixed(2);
                         break;
                     default:
+                        total.innerText = monto;
                         break;
                 }
                 break;
-            case "Pesos Argentinos": // conversion de pesos a dolar y euro
+            case "PesoArg": // conversion de pesos a dolar y euro
                 switch(seleccionDeDivisa2){
                     case "Dolar":
-                        resultado = monto / dolar.valorVenta;
+                        total.innerText = (monto / dolar.valorVenta).toFixed(2);
                         break;
                     case "Euro":
-                        resultado = monto / euro.valorVenta;
+                        total.innerText = (monto / euro.valorVenta).toFixed(2);
                         break;
                     default:
+                        total.innerText = monto;
                         break;
                 }
                 break;
             default:
+                
                 break;    
                    
         }
@@ -149,23 +152,28 @@ function seleccionDeDivisa1(){
 
 } 
 
-total.textContent = resultado.toFixed(2);
+
 
 dropdown1.addEventListener("change", () => {
-    console.log("Cambiaste de moneda")
+    console.log("Cambiaste de moneda");
+    seleccionDeDivisa1();
+    const ultimaDivisa1 = dropdown1.value;
+  
+    localStorage.setItem('ultimaDivisa1', ultimaDivisa1);
 });
 dropdown2.addEventListener("change",() => {
-    console.log("Cambiaste de moneda")
+    console.log("Cambiaste de moneda");
+    seleccionDeDivisa1();
+    const ultimaDivisa2 = dropdown2.value;
+  
+    localStorage.setItem('ultimaDivisa2', ultimaDivisa2);
 } );
 inputCambio.addEventListener("input",() => {
-    console.log("monto a intercambiar")
+    console.log("monto a intercambiar");
+    seleccionDeDivisa1();
 } );
 
-//quiero probar de meterlo asi pero tampoco
-total.innerHTML = `
-<label class="labelSection labelTotal labelSection" for="number" id="labelFinal">${total}</label>
-
-`;
-
-console.log(resultado);
-
+total.addEventListener("change",() => {
+    const ultimoMonto = total.value;
+    localStorage.setItem("ultimoMonto",ultimoMonto);
+});
