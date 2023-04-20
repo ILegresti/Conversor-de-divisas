@@ -69,7 +69,7 @@ class moneda{
 // algunos objetos creados
 const dolar = new moneda("Dolar", 395,391);
 const euro = new moneda("Euro", 427,422);
-const pesoArg = new moneda("Pesos argentinos",1,1);
+const pesoArg = new moneda("Pesos argentinos", 300,233);
 
 /* // metodo filter
 const monedasVarias = [dolar,euro,pesoArg];
@@ -122,7 +122,7 @@ function seleccionDeDivisa1(){
                         total.innerText = (monto * 1.08).toFixed(2);// 1.08 es la tasa de conversion (427 / 395)
                         break;
                     case "PesoArg":
-                        total.innerText = monto * (pesoArg.valorVenta).toFixed(2);
+                        total.innerText = (monto * pesoArg.valorVenta).toFixed(2);
                         break;
                     default:
                         total.innerText = monto;
@@ -171,9 +171,14 @@ dropdown2.addEventListener("change",() => {
 inputCambio.addEventListener("input",() => {
     console.log("monto a intercambiar");
     seleccionDeDivisa1();
+
+   /*  const ultimoMonto = inputCambio.value;
+    localStorage.setItem("ultimoMontoACambiar",ultimoMonto); */
 } );
 
 total.addEventListener("change",() => {
-    const ultimoMonto = total.value;
-    localStorage.setItem("ultimoMonto",ultimoMonto);
+    const adada = monto.value;
+    localStorage.setItem("ultimoMontoCambiado",adada);
 });
+
+
