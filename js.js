@@ -1,62 +1,6 @@
-/* let totalDelIntercambio = 0;
-const valorDolar = 373;
-const valorEuro = 212;
-const valorPesoArg = 1;
-function totalDeLaConversion (cantidadAIntercambiar){
-    let monedaAIntercambiar = prompt("Ingrese la moneda por la cual quiere intercambiar sus divisas: ");
-    if(monedaAIntercambiar == "Dolar" || monedaAIntercambiar == "dolar"){
-        totalDelIntercambio = cantidadAIntercambiar / valorDolar
-    }else if(monedaAIntercambiar == "Euro" || monedaAIntercambiar == "euro"){
-        totalDelIntercambio = cantidadAIntercambiar / valorEuro
-    }else if(monedaAIntercambiar == "peso arg" || monedaAIntercambiar == "Peso arg"){
-        totalDelIntercambio = cantidadAIntercambiar * valorPesoArg
-    }else{
-        alert("Moneda aun no identificada ")
-    }
-    return alert("El total del intercambio es: "+ totalDelIntercambio)
-} */
 
-/* totalDeLaConversion(parseFloat(prompt("ingrese cantidad a intercambiar:")))
-
-
- */
-
-
-
-/* let totalHastaAhora = 0;
-function convertir(cantidad, divisa){
-    if(divisa == "Dolar" || divisa == "dolar"){
-        totalHastaAhora = cantidad / valorDolar
-    }else if(divisa == "Euro" || divisa == "euro"){
-        totalHastaAhora = cantidad / valorEuro
-    }else if(divisa == "peso arg" || divisa == "Peso arg"){
-        totalHastaAhora = cantidad * valorPesoArg
-    }else{
-        alert("Moneda aun no identificada ")
-    }
-    return(totalHastaAhora)
-}
-
-
-let totalDeIntercambio = 0;
-let mensajeUsuario = prompt("Ingrese cantidad a intercambiar o presione 0 para salir")
-function sumoDeAUnoHastaLLegarACantidad(){
-    while(mensajeUsuario != "0"){
-        const divisa = prompt("Ingrese la moneda por la cual quiere intercambiar sus divisas: ");
-        const conversion = convertir(mensajeUsuario, divisa);
-        alert("Resultado de conversion: "+ conversion);
-        mensajeUsuario = prompt("Ingrese cantidad a intercambiar o presione 0 para salir")
-        totalDeIntercambio = totalDeIntercambio + conversion; 
-    }
-    return(alert("Total convertido: "+ totalDeIntercambio))
-}
-
-
-sumoDeAUnoHastaLLegarACantidad()
-
- */
-
-
+let divisas = [];
+obtenerDolarYEuro()
 // funcion constructora
 class moneda{
     constructor(nombre,valorVenta,valorCompra){
@@ -66,9 +10,21 @@ class moneda{
     }
 }
 
-// algunos objetos creados
-const dolar = new moneda("Dolar", 395,391);
-const euro = new moneda("Euro", 427,422);
+
+/* Inserto desde la API los objetos Dolar y Euro. Creo las funciones para obtener sus valores. */
+function obtenerDolarYEuro(){
+    const URLDOLARYEURO = "https://api.bluelytics.com.ar/v2/latest";
+    fetch(URLDOLARYEURO)
+    .then ((respuesta) => respuesta.json())
+    .then((datos) => {
+        divisas.push(datos.blue);
+        divisas.push(datos.blue_euro);
+    })
+    
+}
+console.log(divisas);
+
+
 const pesoArg = new moneda("Pesos argentinos", 300,233);
 
 /* // metodo filter
@@ -106,7 +62,7 @@ function seleccionDeDivisa1(){
             case "Dolar":
                 switch (seleccionDeDivisa2){
                     case "Euro":
-                        total.innerText = (monto * 0.92).toFixed(2); // 0.92 es la tasa de conversion (395 / 427)
+                        total.innerText = (monto * (divisas[0].value_sell / divisas[1].value_sell)).toFixed(2);
                         break;
                     case "PesoArg":
                         total.innerText = (monto * pesoArg.valorVenta).toFixed(2);
@@ -119,7 +75,7 @@ function seleccionDeDivisa1(){
             case "Euro": // conversion de euro a dolar y a pesos
                 switch(seleccionDeDivisa2){
                     case "Dolar":
-                        total.innerText = (monto * 1.08).toFixed(2);// 1.08 es la tasa de conversion (427 / 395)
+                        total.innerText = (monto * (divisas[1].value_sell / divisas[0].value_sell)).toFixed(2);
                         break;
                     case "PesoArg":
                         total.innerText = (monto * pesoArg.valorVenta).toFixed(2);
@@ -132,10 +88,10 @@ function seleccionDeDivisa1(){
             case "PesoArg": // conversion de pesos a dolar y euro
                 switch(seleccionDeDivisa2){
                     case "Dolar":
-                        total.innerText = (monto / dolar.valorVenta).toFixed(2);
+                        total.innerText = (monto / divisas[0].value_sell).toFixed(2);
                         break;
                     case "Euro":
-                        total.innerText = (monto / euro.valorVenta).toFixed(2);
+                        total.innerText = (monto / divisas[1].value_sell).toFixed(2);
                         break;
                     default:
                         total.innerText = monto;
@@ -175,10 +131,4 @@ inputCambio.addEventListener("input",() => {
    /*  const ultimoMonto = inputCambio.value;
     localStorage.setItem("ultimoMontoACambiar",ultimoMonto); */
 } );
-
-total.addEventListener("change",() => {
-    const adada = monto.value;
-    localStorage.setItem("ultimoMontoCambiado",adada);
-});
-
 
