@@ -71,6 +71,7 @@ header nav ul li a{
 .btnInfo{
     background-color: var(--secondary-color);
     color: var(--main-color);
+    border-color: var(--main-color);
 }
 
 
@@ -106,7 +107,10 @@ height: 50%;
 width: 100%;
 }
 
-
+.seccion{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
 
 /*  Inicia seccion de Cards*/
 .container{
@@ -202,12 +206,12 @@ footer button{
 
   
 footer button a {
-    position: absolute;
-    top: 0.4em;
+    /* position: absolute; */
+    /* top: 0.4em;
     left: 1.2em;
     margin: 0;
-    padding: 0;
-    transition: .5s;
+    padding: 0;*/
+    transition: .5s; 
     color: var(--main-font);
     text-decoration: none;
     justify-content: center;
@@ -215,8 +219,10 @@ footer button a {
 }
   
 footer button:hover a {
-    left: 1em;
+    /* left: 1em; */
     color: var(--main-color);
+    font-size: 1.1rem;
+    font-weight: 4000;
 }
   
 /*Final de footer*/

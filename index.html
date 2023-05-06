@@ -35,13 +35,18 @@
             <div class="col sectionDivisas">
               <div>
                 <select class="dropDown" name="monedaInicial" id="monedaInicial">
+                  <option value="">Seleccione una moneda</option>
                   <option value="Euro">Euro</option>
                   <option value="Dolar">Dolar</option>
-                  <option value="PesoArg">Pesos Argentinos</option>
+                  <option value="PesosArg">Pesos Argentinos</option>
                 </select>
               </div>
               <div>
-                <input type="number" class="form-control labelSection" id="inputMonto" placeholder="Ingrese un numero...">
+                <input type="number" 
+                    maxlength="7"
+                    oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" 
+                    class="form-control labelSection" 
+                    id="inputMonto" placeholder="Ingrese un numero...">
               </div>
             </div>
 
@@ -50,6 +55,7 @@
               <div>
   
                 <select class="dropDown" name="monedaFinal" id="monedaFinal">
+                  <option value="">Seleccione una moneda</option>
                   <option value="Euro">Euro</option>
                   <option value="Dolar">Dolar</option>
                   <option value="PesosArg">Pesos Argentinos</option>
@@ -67,7 +73,7 @@
 
 
 
-      <section>
+      <section class="seccion">
         <div class="container">
           <div class="card">
             <figure>

@@ -22,22 +22,9 @@ function obtenerDolarYEuro(){
     })
     
 }
-console.log(divisas);
 
 
 const pesoArg = new moneda("Pesos argentinos",1,1);
-
-/* // metodo filter
-const monedasVarias = [dolar,euro,pesoArg];
-const filtroPorPrecio = monedasVarias.filter((el) => el.valorVenta < 400);
-console.log(filtroPorPrecio);
-
-
-//metodo some()
-const hayMoneda = monedasVarias.find((el) => el.nombre == "Dolar");
-console.log(hayMoneda);
- */
-
 
 
 const dropdown1 = document.getElementById("monedaInicial");
@@ -50,7 +37,7 @@ function seleccionDeDivisas(){
     const seleccionDeDivisa2 = dropdown2.value;
     const monto = inputCambio.value;
 
-    // tomo las divisas seleccionadas en los dropdowns y el valor a cambiar
+ // tomo las divisas seleccionadas en los dropdowns y el valor a cambiar
  // establezco el resultado del label hasta ahora
 
 
@@ -104,31 +91,25 @@ function seleccionDeDivisas(){
                    
         }
     }
-    console.log(seleccionDeDivisa2);
-    console.log(monto);
 } 
 
 
-
+// Event Listeners y local storage
 dropdown1.addEventListener("change", () => {
-    console.log("Cambiaste de moneda");
     seleccionDeDivisas();
     const ultimaDivisa1 = dropdown1.value;
-  
-    localStorage.setItem('ultimaDivisa1', ultimaDivisa1);
+    const monto = inputCambio.value;
+    localStorage.setItem('ultimaDivisa1', JSON.stringify({ultimaDivisa1: ultimaDivisa1, monto: monto}));
 });
+
 dropdown2.addEventListener("change",() => {
-    console.log("Cambiaste de moneda");
     seleccionDeDivisas();
     const ultimaDivisa2 = dropdown2.value;
-  
-    localStorage.setItem('ultimaDivisa2', ultimaDivisa2);
-} );
+    localStorage.setItem('ultimaDivisa2', JSON.stringify({ultimaDivisa2: ultimaDivisa2, monto: total.textContent}));
+});
+
 inputCambio.addEventListener("input",() => {
-    console.log("monto a intercambiar");
     seleccionDeDivisas();
 
-   /*  const ultimoMonto = inputCambio.value;
-    localStorage.setItem("ultimoMontoACambiar",ultimoMonto); */
-} );
+});
 
