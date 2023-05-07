@@ -100,12 +100,26 @@ dropdown1.addEventListener("change", () => {
     const ultimaDivisa1 = dropdown1.value;
     const monto = inputCambio.value;
     localStorage.setItem('ultimaDivisa1', JSON.stringify({ultimaDivisa1: ultimaDivisa1, monto: monto}));
+    Toastify({
+        text: "Seleccionaste la divisa 1",
+        className: "info",
+        style: {
+          background: "linear-gradient(to right, #56ab2f, #a8e063)",
+        }
+      }).showToast();
 });
 
 dropdown2.addEventListener("change",() => {
     seleccionDeDivisas();
     const ultimaDivisa2 = dropdown2.value;
     localStorage.setItem('ultimaDivisa2', JSON.stringify({ultimaDivisa2: ultimaDivisa2, monto: total.textContent}));
+    Toastify({
+        text: "Seleccionaste la divisa 2",
+        className: "info",
+        style: {
+          background: "linear-gradient(to right, #56ab2f, #a8e063)",
+        }
+      }).showToast();
 });
 
 inputCambio.addEventListener("input",() => {
